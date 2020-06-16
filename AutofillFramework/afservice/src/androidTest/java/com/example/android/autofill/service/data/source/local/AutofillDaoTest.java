@@ -22,9 +22,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import android.view.View;
 
 import com.example.android.autofill.service.data.source.local.db.AutofillDatabase;
-import com.example.android.autofill.service.model.AutofillDataset;
-import com.example.android.autofill.service.model.DatasetWithFilledAutofillFields;
-import com.example.android.autofill.service.model.FilledAutofillField;
+import com.example.android.autofill.service.model.*;
+import com.example.android.autofill.service.model.AutoFillDataSet;
 import com.google.common.collect.ImmutableList;
 
 import org.junit.After;
@@ -43,8 +42,8 @@ import static org.hamcrest.Matchers.hasSize;
 
 @RunWith(AndroidJUnit4.class)
 public class AutofillDaoTest {
-    private final AutofillDataset mDataset =
-            new AutofillDataset(UUID.randomUUID().toString(),
+    private final AutoFillDataSet mDataset =
+            new AutoFillDataSet (UUID.randomUUID().toString(),
                     "dataset-1", InstrumentationRegistry.getContext().getPackageName());
     private final FilledAutofillField mUsernameField =
             new FilledAutofillField(mDataset.getId(), View.AUTOFILL_HINT_USERNAME, "login");

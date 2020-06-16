@@ -38,14 +38,14 @@ import android.widget.TextView;
 import com.example.android.autofill.service.data.ClientViewMetadata;
 import com.example.android.autofill.service.data.ClientViewMetadataBuilder;
 import com.example.android.autofill.service.data.DataCallback;
-import com.example.android.autofill.service.data.adapter.DatasetAdapter;
+import com.example.android.autofill.service.data.adapter.DataSetAdapter;
 import com.example.android.autofill.service.data.adapter.ResponseAdapter;
 import com.example.android.autofill.service.data.source.DefaultFieldTypesSource;
 import com.example.android.autofill.service.data.source.local.DefaultFieldTypesLocalJsonSource;
 import com.example.android.autofill.service.data.source.local.LocalAutofillDataSource;
 import com.example.android.autofill.service.data.source.local.dao.AutofillDao;
 import com.example.android.autofill.service.data.source.local.db.AutofillDatabase;
-import com.example.android.autofill.service.model.AutofillDataset;
+import com.example.android.autofill.service.model.AutoFillDataSet;
 import com.example.android.autofill.service.model.DatasetWithFilledAutofillFields;
 import com.example.android.autofill.service.model.FieldType;
 import com.example.android.autofill.service.model.FieldTypeWithHeuristics;
@@ -77,7 +77,7 @@ public class ManualActivity extends AppCompatActivity {
     private static int sDatasetPendingIntentId = 0;
 
     private LocalAutofillDataSource mLocalAutofillDataSource;
-    private DatasetAdapter mDatasetAdapter;
+    private DataSetAdapter mDataSetAdapter;
     private ResponseAdapter mResponseAdapter;
     private ClientViewMetadata mClientViewMetadata;
     private String mPackageName;
@@ -161,7 +161,7 @@ public class ManualActivity extends AppCompatActivity {
                 field.getFieldTypeName(), field.getTextValue(), field.getDateValue(),
                 field.getToggleValue());
         String datasetName = "dataset-manual";
-        AutofillDataset autofillDataset = new AutofillDataset(newDatasetId, datasetName, mPackageName);
+        AutoFillDataSet autofillDataset = new AutoFillDataSet (newDatasetId, datasetName, mPackageName);
         datasetWithFilledAutofillFields.filledAutofillFields = ImmutableList.of(copyOfField);
         datasetWithFilledAutofillFields.autofillDataset = autofillDataset;
         Intent intent = getIntent();
@@ -175,9 +175,9 @@ public class ManualActivity extends AppCompatActivity {
                         ClientViewMetadataBuilder builder = new ClientViewMetadataBuilder(clientParser,
                                 fieldTypesByAutofillHint);
                         mClientViewMetadata = builder.buildClientViewMetadata();
-                        mDatasetAdapter = new DatasetAdapter(clientParser);
+                        mDataSetAdapter = new DataSetAdapter (clientParser);
                         mResponseAdapter = new ResponseAdapter(ManualActivity.this,
-                                mClientViewMetadata, mPackageName, mDatasetAdapter);
+                                mClientViewMetadata, mPackageName, mDataSetAdapter );
                         FillResponse fillResponse = mResponseAdapter.buildResponseForFocusedNode(
                                 datasetName, field, fieldType);
                         setResponseIntent(fillResponse);

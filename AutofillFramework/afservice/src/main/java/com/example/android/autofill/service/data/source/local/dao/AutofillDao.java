@@ -21,13 +21,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.android.autofill.service.model.AutofillDataset;
-import com.example.android.autofill.service.model.AutofillHint;
-import com.example.android.autofill.service.model.DatasetWithFilledAutofillFields;
-import com.example.android.autofill.service.model.FieldType;
-import com.example.android.autofill.service.model.FieldTypeWithHeuristics;
-import com.example.android.autofill.service.model.FilledAutofillField;
-import com.example.android.autofill.service.model.ResourceIdHeuristic;
+import com.example.android.autofill.service.model.*;
+import com.example.android.autofill.service.model.AutoFillDataSet;
 
 import java.util.Collection;
 import java.util.List;
@@ -40,13 +35,13 @@ public interface AutofillDao {
      * @param allAutofillHints Filtering parameter; represents all of the hints associated with
      *                         all of the views on the page.
      */
-    @Query("SELECT DISTINCT id, datasetName FROM FilledAutofillField, AutofillDataset" +
-            " WHERE AutofillDataset.id = FilledAutofillField.datasetId" +
+    @Query("SELECT DISTINCT id, datasetName FROM FilledAutofillField, AutoFillDataSet" +
+            " WHERE AutoFillDataSet.id = FilledAutofillField.datasetId" +
             " AND FilledAutofillField.fieldTypeName IN (:allAutofillHints)")
     List<DatasetWithFilledAutofillFields> getDatasets(List<String> allAutofillHints);
 
-    @Query("SELECT DISTINCT id, datasetName FROM FilledAutofillField, AutofillDataset" +
-            " WHERE AutofillDataset.id = FilledAutofillField.datasetId")
+    @Query("SELECT DISTINCT id, datasetName FROM FilledAutofillField, AutoFillDataSet" +
+            " WHERE AutoFillDataSet.id = FilledAutofillField.datasetId")
     List<DatasetWithFilledAutofillFields> getAllDatasets();
 
     /**
@@ -58,9 +53,9 @@ public interface AutofillDao {
      *                         all of the views on the page.
      * @param datasetName      Filtering parameter; only return datasets with this name.
      */
-    @Query("SELECT DISTINCT id, datasetName FROM FilledAutofillField, AutofillDataset" +
-            " WHERE AutofillDataset.id = FilledAutofillField.datasetId" +
-            " AND AutofillDataset.datasetName = (:datasetName)" +
+    @Query("SELECT DISTINCT id, datasetName FROM FilledAutofillField, AutoFillDataSet" +
+            " WHERE AutoFillDataSet.id = FilledAutofillField.datasetId" +
+            " AND AutoFillDataSet.datasetName = (:datasetName)" +
             " AND FilledAutofillField.fieldTypeName IN (:fieldTypes)")
     List<DatasetWithFilledAutofillFields> getDatasetsWithName(
             List<String> fieldTypes, String datasetName);
@@ -88,9 +83,9 @@ public interface AutofillDao {
             " WHERE FieldType.typeName = ResourceIdHeuristic.fieldTypeName")
     List<FieldTypeWithHeuristics> getFieldTypesForAutofillHints(List<String> autofillHints);
 
-    @Query("SELECT DISTINCT id, datasetName FROM FilledAutofillField, AutofillDataset" +
-            " WHERE AutofillDataset.id = FilledAutofillField.datasetId" +
-            " AND AutofillDataset.id = (:datasetId)")
+    @Query("SELECT DISTINCT id, datasetName FROM FilledAutofillField, AutoFillDataSet" +
+            " WHERE AutoFillDataSet.id = FilledAutofillField.datasetId" +
+            " AND AutoFillDataSet.id = (:datasetId)")
     DatasetWithFilledAutofillFields getAutofillDatasetWithId(String datasetId);
 
     @Query("SELECT * FROM FilledAutofillField" +
@@ -109,7 +104,7 @@ public interface AutofillDao {
     void insertFilledAutofillFields(Collection<FilledAutofillField> autofillFields);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAutofillDataset(AutofillDataset datasets);
+    void insertAutofillDataset( AutoFillDataSet datasets);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAutofillHints(List<AutofillHint> autofillHints);
@@ -121,6 +116,6 @@ public interface AutofillDao {
     void insertFieldTypes(List<FieldType> fieldTypes);
 
 
-    @Query("DELETE FROM AutofillDataset")
+    @Query("DELETE FROM AutoFillDataSet")
     void clearAll();
 }

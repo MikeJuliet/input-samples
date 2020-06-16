@@ -26,13 +26,8 @@ import androidx.annotation.NonNull;
 
 import com.example.android.autofill.service.data.source.DefaultFieldTypesSource;
 import com.example.android.autofill.service.data.source.local.dao.AutofillDao;
-import com.example.android.autofill.service.model.AutofillDataset;
-import com.example.android.autofill.service.model.AutofillHint;
-import com.example.android.autofill.service.model.DefaultFieldTypeWithHints;
-import com.example.android.autofill.service.model.FakeData;
-import com.example.android.autofill.service.model.FieldType;
-import com.example.android.autofill.service.model.FilledAutofillField;
-import com.example.android.autofill.service.model.ResourceIdHeuristic;
+import com.example.android.autofill.service.model.*;
+import com.example.android.autofill.service.model.AutoFillDataSet;
 import com.example.android.autofill.service.util.AppExecutors;
 
 import java.util.ArrayList;
@@ -43,7 +38,7 @@ import static java.util.stream.Collectors.toList;
 
 @Database(entities = {
         FilledAutofillField.class,
-        AutofillDataset.class,
+        AutoFillDataSet.class,
         FieldType.class,
         AutofillHint.class,
         ResourceIdHeuristic.class

@@ -24,7 +24,7 @@ import androidx.annotation.NonNull;
 import javax.annotation.Nullable;
 
 @Entity(primaryKeys = {"datasetId", "fieldTypeName"}, foreignKeys = {
-        @ForeignKey(entity = AutofillDataset.class, parentColumns = "id",
+        @ForeignKey(entity = AutoFillDataSet.class, parentColumns = "id",
                 childColumns = "datasetId", onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = FieldType.class, parentColumns = "typeName",
                 childColumns = "fieldTypeName", onDelete = ForeignKey.CASCADE)

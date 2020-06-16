@@ -34,7 +34,7 @@ import android.widget.Toast;
 import com.example.android.autofill.service.data.ClientViewMetadata;
 import com.example.android.autofill.service.data.ClientViewMetadataBuilder;
 import com.example.android.autofill.service.data.DataCallback;
-import com.example.android.autofill.service.data.adapter.DatasetAdapter;
+import com.example.android.autofill.service.data.adapter.DataSetAdapter;
 import com.example.android.autofill.service.data.adapter.ResponseAdapter;
 import com.example.android.autofill.service.data.source.DefaultFieldTypesSource;
 import com.example.android.autofill.service.data.source.local.DefaultFieldTypesLocalJsonSource;
@@ -71,7 +71,7 @@ public class AuthActivity extends AppCompatActivity {
     private LocalAutofillDataSource mLocalAutofillDataSource;
     private DigitalAssetLinksRepository mDalRepository;
     private EditText mMasterPassword;
-    private DatasetAdapter mDatasetAdapter;
+    private DataSetAdapter mDataSetAdapter;
     private ResponseAdapter mResponseAdapter;
     private ClientViewMetadata mClientViewMetadata;
     private String mPackageName;
@@ -156,9 +156,9 @@ public class AuthActivity extends AppCompatActivity {
                 ClientViewMetadataBuilder builder = new ClientViewMetadataBuilder(clientParser,
                         fieldTypesByAutofillHint);
                 mClientViewMetadata = builder.buildClientViewMetadata();
-                mDatasetAdapter = new DatasetAdapter(clientParser);
+                mDataSetAdapter = new DataSetAdapter (clientParser);
                 mResponseAdapter = new ResponseAdapter(AuthActivity.this,
-                        mClientViewMetadata, mPackageName, mDatasetAdapter);
+                        mClientViewMetadata, mPackageName, mDataSetAdapter );
                 if (forResponse) {
                     fetchAllDatasetsAndSetIntent(fieldTypesByAutofillHint);
                 } else {
@@ -183,7 +183,7 @@ public class AuthActivity extends AppCompatActivity {
                         String datasetName = dataset.autofillDataset.getDatasetName();
                         RemoteViews remoteViews = RemoteViewsHelper.viewsWithNoAuth(
                                 mPackageName, datasetName);
-                        setDatasetIntent(mDatasetAdapter.buildDataset(fieldTypesByAutofillHint,
+                        setDatasetIntent( mDataSetAdapter.buildDataSet (fieldTypesByAutofillHint,
                                 dataset, remoteViews));
                         finish();
                     }

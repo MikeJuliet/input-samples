@@ -32,7 +32,7 @@ import static com.example.android.autofill.service.util.Util.logd;
 import static com.example.android.autofill.service.util.Util.logw;
 import static java.util.stream.Collectors.toList;
 
-public final class AutofillHints {
+public final class AutoFillHints {
     public static final int PARTITION_ALL = -1;
     public static final int PARTITION_OTHER = 0;
     public static final int PARTITION_ADDRESS = 1;
@@ -42,7 +42,7 @@ public final class AutofillHints {
             PARTITION_OTHER, PARTITION_ADDRESS, PARTITION_EMAIL, PARTITION_CREDIT_CARD
     };
 
-    private AutofillHints() {
+    private AutoFillHints () {
     }
 
     public static FilledAutofillField generateFakeField(
@@ -69,25 +69,25 @@ public final class AutofillHints {
         return new FilledAutofillField(datasetId, fieldTypeName, text, date, toggle);
     }
 
-    public static String getFieldTypeNameFromAutofillHints(
-            HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutofillHint,
+    public static String getFieldTypeNameFromAutoFillHints (
+            HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutoFillHint,
             @NonNull List<String> hints) {
-        return getFieldTypeNameFromAutofillHints(fieldTypesByAutofillHint, hints, PARTITION_ALL);
+        return getFieldTypeNameFromAutoFillHints (fieldTypesByAutoFillHint, hints, PARTITION_ALL);
     }
 
-    public static String getFieldTypeNameFromAutofillHints(
-            HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutofillHint,
+    public static String getFieldTypeNameFromAutoFillHints (
+            HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutoFillHint,
             @NonNull List<String> hints, int partition) {
         List<String> fieldTypeNames = removePrefixes(hints)
                 .stream()
-                .filter(fieldTypesByAutofillHint::containsKey)
-                .map(fieldTypesByAutofillHint::get)
+                .filter(fieldTypesByAutoFillHint::containsKey)
+                .map(fieldTypesByAutoFillHint::get)
                 .filter(Objects::nonNull)
                 .filter((fieldTypeWithHints) ->
                         matchesPartition(fieldTypeWithHints.fieldType.getPartition(), partition))
                 .map(FieldTypeWithHeuristics::getFieldType).map(FieldType::getTypeName)
                 .collect(toList());
-        if (fieldTypeNames != null && fieldTypeNames.size() > 0) {
+        if ( fieldTypeNames.size ( ) > 0 ) {
             return fieldTypeNames.get(0);
         } else {
             return null;

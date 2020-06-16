@@ -36,7 +36,7 @@ import com.example.android.autofill.service.data.ClientAutofillDataBuilder;
 import com.example.android.autofill.service.data.ClientViewMetadata;
 import com.example.android.autofill.service.data.ClientViewMetadataBuilder;
 import com.example.android.autofill.service.data.DataCallback;
-import com.example.android.autofill.service.data.adapter.DatasetAdapter;
+import com.example.android.autofill.service.data.adapter.DataSetAdapter;
 import com.example.android.autofill.service.data.adapter.ResponseAdapter;
 import com.example.android.autofill.service.data.source.DefaultFieldTypesSource;
 import com.example.android.autofill.service.data.source.PackageVerificationDataSource;
@@ -113,7 +113,7 @@ public class MyAutofillService extends AutofillService {
                 new DataCallback<HashMap<String, FieldTypeWithHeuristics>>() {
                     @Override
                     public void onLoaded(HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutofillHint) {
-                        DatasetAdapter datasetAdapter = new DatasetAdapter(parser);
+                        DataSetAdapter datasetAdapter = new DataSetAdapter (parser);
                         ClientViewMetadataBuilder clientViewMetadataBuilder =
                                 new ClientViewMetadataBuilder(parser, fieldTypesByAutofillHint);
                         mClientViewMetadata = clientViewMetadataBuilder.buildClientViewMetadata();

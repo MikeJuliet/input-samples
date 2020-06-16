@@ -69,7 +69,7 @@ public final class AutofillHintProperties {
 
     /**
      * Returns which data partition this autofill hint should be a part of. See partitions defined
-     * in {@link AutofillHints}.
+     * in {@link AutoFillHints}.
      */
     public int getPartition() {
         return mPartition;

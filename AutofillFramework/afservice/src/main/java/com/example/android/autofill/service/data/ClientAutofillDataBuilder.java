@@ -21,13 +21,10 @@ import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.autofill.AutofillValue;
 
-import com.example.android.autofill.service.AutofillHints;
+import com.example.android.autofill.service.AutoFillHints;
 import com.example.android.autofill.service.ClientParser;
-import com.example.android.autofill.service.model.AutofillDataset;
-import com.example.android.autofill.service.model.DatasetWithFilledAutofillFields;
-import com.example.android.autofill.service.model.FieldType;
-import com.example.android.autofill.service.model.FieldTypeWithHeuristics;
-import com.example.android.autofill.service.model.FilledAutofillField;
+import com.example.android.autofill.service.model.*;
+import com.example.android.autofill.service.model.AutoFillDataSet;
 import com.google.common.collect.ImmutableList;
 
 import java.util.HashMap;
@@ -54,8 +51,8 @@ public class ClientAutofillDataBuilder implements AutofillDataBuilder {
     public List<DatasetWithFilledAutofillFields> buildDatasetsByPartition(int datasetNumber) {
         ImmutableList.Builder<DatasetWithFilledAutofillFields> listBuilder =
                 new ImmutableList.Builder<>();
-        for (int partition : AutofillHints.PARTITIONS) {
-            AutofillDataset autofillDataset = new AutofillDataset(UUID.randomUUID().toString(),
+        for (int partition : AutoFillHints.PARTITIONS) {
+            AutoFillDataSet autofillDataset = new AutoFillDataSet (UUID.randomUUID().toString(),
                     "dataset-" + datasetNumber + "." + partition, mPackageName);
             DatasetWithFilledAutofillFields dataset =
                     buildDatasetForPartition(autofillDataset, partition);
@@ -70,8 +67,8 @@ public class ClientAutofillDataBuilder implements AutofillDataBuilder {
      * Parses a client view structure and build a dataset (in the form of a
      * {@link DatasetWithFilledAutofillFields}) from the view metadata found.
      */
-    private DatasetWithFilledAutofillFields buildDatasetForPartition(AutofillDataset dataset,
-            int partition) {
+    private DatasetWithFilledAutofillFields buildDatasetForPartition( AutoFillDataSet dataset,
+                                                                      int partition) {
         DatasetWithFilledAutofillFields datasetWithFilledAutofillFields =
                 new DatasetWithFilledAutofillFields();
         datasetWithFilledAutofillFields.autofillDataset = dataset;
@@ -123,7 +120,7 @@ public class ClientAutofillDataBuilder implements AutofillDataBuilder {
             FieldTypeWithHeuristics fieldTypeWithHeuristics = mFieldTypesByAutofillHint.get(hint);
             if (fieldTypeWithHeuristics != null) {
                 FieldType fieldType = fieldTypeWithHeuristics.fieldType;
-                if (!AutofillHints.matchesPartition(fieldType.getPartition(), partition)) {
+                if (! AutoFillHints.matchesPartition(fieldType.getPartition(), partition)) {
                     continue;
                 }
                     // Only add the field if the hint is supported by the type.

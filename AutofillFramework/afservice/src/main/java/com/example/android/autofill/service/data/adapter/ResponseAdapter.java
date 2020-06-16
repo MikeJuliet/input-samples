@@ -37,15 +37,15 @@ import java.util.List;
 
 public class ResponseAdapter {
     private final Context mContext;
-    private final DatasetAdapter mDatasetAdapter;
+    private final DataSetAdapter mDataSetAdapter;
     private final String mPackageName;
     private final ClientViewMetadata mClientViewMetadata;
 
     public ResponseAdapter(Context context, ClientViewMetadata clientViewMetadata,
-            String packageName, DatasetAdapter datasetAdapter) {
+            String packageName, DataSetAdapter datasetAdapter) {
         mContext = context;
         mClientViewMetadata = clientViewMetadata;
-        mDatasetAdapter = datasetAdapter;
+        mDataSetAdapter = datasetAdapter;
         mPackageName = packageName;
     }
 
@@ -54,7 +54,7 @@ public class ResponseAdapter {
         FillResponse.Builder responseBuilder = new FillResponse.Builder();
         RemoteViews remoteViews = RemoteViewsHelper.viewsWithNoAuth(
                 mPackageName, datasetName);
-        Dataset dataset = mDatasetAdapter.buildDatasetForFocusedNode(field, fieldType, remoteViews);
+        Dataset dataset = mDataSetAdapter.buildDataSetForFocusedNode (field, fieldType, remoteViews);
         if (dataset != null) {
             responseBuilder.addDataset(dataset);
             return responseBuilder.build();
@@ -81,12 +81,12 @@ public class ResponseAdapter {
                                 mContext, datasetName);
                         RemoteViews remoteViews = RemoteViewsHelper.viewsWithAuth(
                                 mPackageName, datasetName);
-                        dataset = mDatasetAdapter.buildDataset(fieldTypesByAutofillHint,
+                        dataset = mDataSetAdapter.buildDataSet (fieldTypesByAutofillHint,
                                 datasetWithFilledAutofillFields, remoteViews, intentSender);
                     } else {
                         RemoteViews remoteViews = RemoteViewsHelper.viewsWithNoAuth(
                                 mPackageName, datasetName);
-                        dataset = mDatasetAdapter.buildDataset(fieldTypesByAutofillHint,
+                        dataset = mDataSetAdapter.buildDataSet (fieldTypesByAutofillHint,
                                 datasetWithFilledAutofillFields, remoteViews);
                     }
                     if (dataset != null) {

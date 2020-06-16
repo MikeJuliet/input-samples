@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DatasetWithFilledAutofillFields {
     @Embedded
-    public AutofillDataset autofillDataset;
+    public AutoFillDataSet autofillDataset;
 
     @Relation(parentColumn = "id", entityColumn = "datasetId", entity = FilledAutofillField.class)
     public List<FilledAutofillField> filledAutofillFields;

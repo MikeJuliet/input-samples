@@ -21,7 +21,7 @@ import androidx.room.Entity;
 import androidx.annotation.NonNull;
 
 @Entity(primaryKeys = {"id"})
-public class AutofillDataset {
+public class AutoFillDataSet {
     @NonNull
     @ColumnInfo(name = "id")
     private final String mId;
@@ -34,8 +34,8 @@ public class AutofillDataset {
     @ColumnInfo(name = "packageName")
     private final String mPackageName;
 
-    public AutofillDataset(@NonNull String id, @NonNull String datasetName,
-                           @NonNull String packageName) {
+    public AutoFillDataSet ( @NonNull String id, @NonNull String datasetName,
+                             @NonNull String packageName) {
         mId = id;
         mDatasetName = datasetName;
         mPackageName = packageName;
@@ -61,7 +61,7 @@ public class AutofillDataset {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AutofillDataset that = (AutofillDataset) o;
+        AutoFillDataSet that = ( AutoFillDataSet ) o;
 
         if (!mId.equals(that.mId)) return false;
         if (!mDatasetName.equals(that.mDatasetName)) return false;
