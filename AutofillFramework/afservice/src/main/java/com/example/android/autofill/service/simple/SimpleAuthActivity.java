@@ -16,7 +16,6 @@
 
 package com.example.android.autofill.service.simple;
 
-import static android.view.autofill.AutofillManager.EXTRA_ASSIST_STRUCTURE;
 import static android.view.autofill.AutofillManager.EXTRA_AUTHENTICATION_RESULT;
 
 import android.app.Activity;
@@ -28,16 +27,12 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.service.autofill.Dataset;
 import android.service.autofill.FillResponse;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.ArrayMap;
 import android.view.autofill.AutofillId;
-import android.view.autofill.AutofillValue;
-import android.widget.RemoteViews;
 
 import com.example.android.autofill.service.R;
-
-import java.util.Map.Entry;
 
 /**
  * Activity used for autofill authentication, it simply sets the dataste upon tapping OK.

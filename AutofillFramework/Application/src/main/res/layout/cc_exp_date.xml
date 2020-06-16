@@ -16,7 +16,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navigation_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -54,5 +54,5 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/monthYearDelimiter"
             app:layout_constraintTop_toTopOf="@+id/monthYearDelimiter" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </merge>

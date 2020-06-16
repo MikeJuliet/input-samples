@@ -22,7 +22,7 @@ import android.app.assist.AssistStructure.WindowNode;
 import android.os.Bundle;
 import android.service.autofill.FillContext;
 import android.service.autofill.SaveInfo;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewStructure.HtmlInfo;

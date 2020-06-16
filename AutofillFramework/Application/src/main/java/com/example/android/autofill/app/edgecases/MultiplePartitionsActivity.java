@@ -17,7 +17,7 @@ package com.example.android.autofill.app.edgecases;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.autofill.AutofillManager;
 import android.widget.Toast;

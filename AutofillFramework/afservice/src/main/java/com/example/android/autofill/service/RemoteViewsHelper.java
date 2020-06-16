@@ -15,7 +15,7 @@
  */
 package com.example.android.autofill.service;
 
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 import android.widget.RemoteViews;
 
 /**

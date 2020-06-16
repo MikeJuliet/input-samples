@@ -15,13 +15,11 @@
  */
 package com.example.android.autofill.app.antipatterns;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.autofill.AutofillManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -30,8 +28,6 @@ import android.widget.Toast;
 import com.example.android.autofill.app.R;
 import com.example.android.autofill.app.WelcomeActivity;
 import com.example.android.autofill.app.view.widget.InfoButton;
-
-import static com.example.android.autofill.app.Util.TAG;
 
 public class CallbackLessAutoCompleteSignInActivity extends AppCompatActivity {
     private AutoCompleteTextView mUsernameAutoCompleteField;

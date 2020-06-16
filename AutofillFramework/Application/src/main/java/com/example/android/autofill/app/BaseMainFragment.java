@@ -16,8 +16,8 @@
 
 package com.example.android.autofill.app;
 
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
 public abstract class BaseMainFragment extends Fragment {
     public abstract @StringRes int getPageTitleResId();

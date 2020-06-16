@@ -15,7 +15,7 @@
  */
 package com.example.android.autofill.service;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.example.android.autofill.service.model.FakeData;
 import com.example.android.autofill.service.model.FieldType;

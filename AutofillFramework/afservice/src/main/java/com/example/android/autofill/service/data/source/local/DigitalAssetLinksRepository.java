@@ -17,7 +17,7 @@ package com.example.android.autofill.service.data.source.local;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.example.android.autofill.service.data.DataCallback;
 import com.example.android.autofill.service.data.source.DalService;

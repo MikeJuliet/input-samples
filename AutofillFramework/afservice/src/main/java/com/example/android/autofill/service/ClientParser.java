@@ -17,7 +17,7 @@
 package com.example.android.autofill.service;
 
 import android.app.assist.AssistStructure;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;

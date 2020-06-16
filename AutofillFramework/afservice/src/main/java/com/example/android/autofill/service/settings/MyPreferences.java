@@ -19,7 +19,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.service.autofill.Dataset;
 import android.service.autofill.FillResponse;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.example.android.autofill.service.util.Util;
 

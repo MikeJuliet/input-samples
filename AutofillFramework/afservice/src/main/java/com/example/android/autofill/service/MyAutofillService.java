@@ -27,8 +27,8 @@ import android.service.autofill.FillRequest;
 import android.service.autofill.FillResponse;
 import android.service.autofill.SaveCallback;
 import android.service.autofill.SaveRequest;
-import android.support.annotation.NonNull;
-import android.view.autofill.AutofillManager;
+import androidx.annotation.NonNull;
+
 import android.widget.RemoteViews;
 
 import com.example.android.autofill.service.data.AutofillDataBuilder;
@@ -57,7 +57,6 @@ import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static com.example.android.autofill.service.util.Util.DalCheckRequirement;
 import static com.example.android.autofill.service.util.Util.bundleToString;
